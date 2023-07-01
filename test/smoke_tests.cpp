@@ -123,3 +123,100 @@ TEST(BinarySearchTest, ArraySearchMidMinusOneOdd_TargetFound) {
 
     ASSERT_GE(TestAlgos.binarySearch(array, target), 5);
 }
+
+// 1. The vector is empty - Expected: -1
+TEST(TernarySearchTest, EmptyVector) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v;
+    int target = 5;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(-1, result);
+}
+
+// 2. The target is not present in the vector - Expected: -1
+TEST(TernarySearchTest, TargetNotPresent) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {1, 3, 5, 7, 9};
+    int target = 6;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(-1, result);
+}
+
+// 3. The target is the first element of the vector - Expected: 0
+TEST(TernarySearchTest, TargetIsFirstElement) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {5, 10, 15, 20, 25};
+    int target = 5;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(0, result);
+}
+
+// 4. The target is the last element of the vector - Expected: 4
+TEST(TernarySearchTest, TargetIsLastElement) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {5, 10, 15, 20, 25};
+    int target = 25;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(4, result);
+}
+
+// 5. The target is in the middle of the vector - Expected: 2
+TEST(TernarySearchTest, TargetInMiddle) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {5, 10, 15, 20, 25};
+    int target = 15;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(2, result);
+}
+
+// 6. The target is in the first third of the vector - Expected: 0
+TEST(TernarySearchTest, TargetInFirstThird) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {5, 10, 15, 20, 25};
+    int target = 10;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(1, result);
+}
+
+// 7. The target is in the last third of the vector - Expected: 4
+TEST(TernarySearchTest, TargetInLastThird) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {5, 10, 15, 20, 25};
+    int target = 20;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(3, result);
+}
+
+// Invalid partition - Test Case:
+
+// 8. The vector is not sorted in ascending order - Expected: -1
+TEST(TernarySearchTest, VectorNotSorted) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {10, 5, 15, 20, 25};
+    int target = 10;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(-1, result);
+}
+
+// Additional Test Cases:
+
+// Test an edge case with a vector containing a single element
+TEST(TernarySearchTest, SingleElementVector) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v = {5};
+    int target = 5;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(0, result);
+}
+
+// Test a large vector to check performance
+TEST(TernarySearchTest, LargeVector) {
+    SearchAlgos searchAlgos;
+    std::vector<int> v;
+    for (int i = 0; i < 1000000; ++i) {
+        v.push_back(i);
+    }
+    int target = 999999;
+    int result = searchAlgos.ternarySearch(v, target);
+    EXPECT_EQ(999999, result);
+}

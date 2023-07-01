@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.26.4)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "cmake")
 
-project(basic_cpp_project VERSION 1.0)
+project(algo-visualizer VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

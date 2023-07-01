@@ -6,6 +6,7 @@
 class SearchAlgos {
     public:
         int binarySearch(const std::vector<int>&, int);
+        int ternarySearch(const std::vector<int>&, int);
 };
 
 #endif
