@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-// Include the header file containing the SearchAlgos::binarySearch function
 #include "../include/search_algos.h"
+#include "../include/sort_algos.h"
 
 TEST(BinarySearchTest, EmptyArray) {
     SearchAlgos TestAlgos;
@@ -219,4 +219,70 @@ TEST(TernarySearchTest, LargeVector) {
     int target = 999999;
     int result = searchAlgos.ternarySearch(v, target);
     EXPECT_EQ(999999, result);
+}
+
+// Test case for an empty vector
+TEST(BubbleSortTest, EmptyVector) {
+    SortAlgos sorter;
+    std::vector<int> input;
+    std::vector<int> expected;
+
+    std::vector<int> result = sorter.bubbleSort(input);
+
+    EXPECT_EQ(result, expected);
+}
+
+// Test case for a vector with one element
+TEST(BubbleSortTest, SingleElementVector) {
+    SortAlgos sorter;
+    std::vector<int> input = {5};
+    std::vector<int> expected = {5};
+
+    std::vector<int> result = sorter.bubbleSort(input);
+
+    EXPECT_EQ(result, expected);
+}
+
+// Test case for a vector with sorted elements
+TEST(BubbleSortTest, SortedVector) {
+    SortAlgos sorter;
+    std::vector<int> input = {1, 2, 3, 4, 5};
+    std::vector<int> expected = {1, 2, 3, 4, 5};
+
+    std::vector<int> result = sorter.bubbleSort(input);
+
+    EXPECT_EQ(result, expected);
+}
+
+// Test case for a vector with reverse sorted elements
+TEST(BubbleSortTest, ReverseSortedVector) {
+    SortAlgos sorter;
+    std::vector<int> input = {5, 4, 3, 2, 1};
+    std::vector<int> expected = {1, 2, 3, 4, 5};
+
+    std::vector<int> result = sorter.bubbleSort(input);
+
+    EXPECT_EQ(result, expected);
+}
+
+// Test case for a vector with duplicate elements
+TEST(BubbleSortTest, VectorWithDuplicates) {
+    SortAlgos sorter;
+    std::vector<int> input = {3, 2, 1, 2, 3};
+    std::vector<int> expected = {1, 2, 2, 3, 3};
+
+    std::vector<int> result = sorter.bubbleSort(input);
+
+    EXPECT_EQ(result, expected);
+}
+
+// Test case for a vector with negative elements
+TEST(BubbleSortTest, VectorWithNegatives) {
+    SortAlgos sorter;
+    std::vector<int> input = {-5, -3, -1, -4, -2};
+    std::vector<int> expected = {-5, -4, -3, -2, -1};
+
+    std::vector<int> result = sorter.bubbleSort(input);
+
+    EXPECT_EQ(result, expected);
 }

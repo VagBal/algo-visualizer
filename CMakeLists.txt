@@ -32,9 +32,11 @@ set_property(TARGET gtest_main PROPERTY FOLDER "gtest")
 add_library("${PROJECT_NAME}" STATIC
     # Source files
     src/search_algos.cpp
+    src/sort_algos.cpp
 
     # Header files
     include/search_algos.h
+    include/sort_algos.h
 )
 
 #target_compile_definitions("${PROJECT_NAME}" PRIVATE PROJECT_NAMESPACE=${PROJECT_NAMEspace})
